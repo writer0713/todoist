@@ -4,17 +4,21 @@ import { persist } from 'zustand/middleware';
 
 interface TodoStore {
   todos: ITodo[];
-  currentStatus: Status;
   addTodo: (text: string) => void;
   removeTodo: (id: number) => void;
-  setTodoStatus: (id: number, status: Status) => void;
-  setCurrentStatus: (status: Status) => void;
+
+  statuses: string[];
+  currentStatus: string;
+  addStatus: (status: string) => void;
+  modifyTodoStatus: (id: number, status: string) => void;
+  setCurrentStatus: (status: string) => void;
 }
 
 export const useTodoStore = create<TodoStore>()(
   persist(
     (set) => ({
       todos: [],
+      statuses: [Status.TODO, Status.DOING, Status.DONE],
       currentStatus: Status.TODO,
       addTodo: (text: string) =>
         set((state) => ({
@@ -27,7 +31,10 @@ export const useTodoStore = create<TodoStore>()(
         set((state) => ({
           todos: state.todos.filter((todo) => todo.id !== id),
         })),
-      setTodoStatus(id, status) {
+      addStatus(status) {
+        set((state) => ({ statuses: [...state.statuses, status] }));
+      },
+      modifyTodoStatus(id, status) {
         set((state) => ({
           todos: state.todos.map((todo) =>
             todo.id === id ? { ...todo, status } : todo

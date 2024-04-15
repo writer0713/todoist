@@ -24,4 +24,4 @@
 - [x] select option 으로 type 필터링해서 화면에 표시
 - [x] todo 지우기 기능 구현
 - [x] LocalStorage 저장 / 불러오기 기능 구현
-- [ ] custom 타입 추가하는 기능 구현
+- [x] custom 타입 추가하는 기능 구현

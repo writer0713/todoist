@@ -12,6 +12,7 @@ export default function InputForm() {
   };
 
   const handleAddTodo = () => {
+    if (value.length === 0) return;
     addTodo(value);
     setValue('');
   };

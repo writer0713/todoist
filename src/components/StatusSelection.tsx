@@ -6,13 +6,12 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 import { useTodoStore } from '../stores/TodoStore';
-import { Status } from '../types/Todo.type';
 
 export default function StatusSelection() {
-  const { currentStatus, setCurrentStatus } = useTodoStore();
+  const { statuses, currentStatus, setCurrentStatus } = useTodoStore();
 
   const handleChange = (event: SelectChangeEvent) => {
-    const status = event.target.value as Status;
+    const status = event.target.value as string;
     setCurrentStatus(status);
     console.log(status);
   };
@@ -26,9 +25,11 @@ export default function StatusSelection() {
         label="Status"
         onChange={handleChange}
       >
-        <MenuItem value={Status.TODO}>TODO</MenuItem>
-        <MenuItem value={Status.DOING}>DOING</MenuItem>
-        <MenuItem value={Status.DONE}>DONE</MenuItem>
+        {statuses.map((status) => (
+          <MenuItem key={status} value={status}>
+            {status}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   );

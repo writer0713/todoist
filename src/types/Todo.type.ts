@@ -1,7 +1,7 @@
 export default interface ITodo {
   id: number;
   text: string;
-  status: Status;
+  status: string;
 }
 
 export enum Status {
