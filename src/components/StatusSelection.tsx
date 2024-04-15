@@ -5,9 +5,8 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
-import { useState } from 'react';
-import { Status } from '../types/Todo.type';
 import { useTodoStore } from '../stores/TodoStore';
+import { Status } from '../types/Todo.type';
 
 export default function StatusSelection() {
   const { currentStatus, setCurrentStatus } = useTodoStore();

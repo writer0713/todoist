@@ -11,7 +11,7 @@ function App() {
     <div className="w-full min-h-screen flex flex-col justify-center items-center gap-5">
       <h1 className="text-3xl font-bold">Todoist</h1>
 
-      <div className="flex flex-col gap-20">
+      <div className="flex flex-col gap-20 w-[375px]">
         <InputForm />
         <StatusSelection />
         <Todos todos={todos} />

@@ -22,6 +22,6 @@
 - [x] type 추가 (TODO | DOING | DONE)
 - [x] type 수정기능 구현
 - [x] select option 으로 type 필터링해서 화면에 표시
-- [ ] todo 지우기 기능 구현
+- [x] todo 지우기 기능 구현
 - [ ] LocalStorage 저장 / 불러오기 기능 구현
 - [ ] custom 타입 추가하는 기능 구현

@@ -3,7 +3,7 @@ import ITodo, { Status } from '../types/Todo.type';
 import { useTodoStore } from '../stores/TodoStore';
 
 export default function Todo({ todo }: { todo: ITodo }) {
-  const { setTodoStatus } = useTodoStore();
+  const { removeTodo, setTodoStatus } = useTodoStore();
 
   const handleSetTodoStatus = (status: Status) => {
     setTodoStatus(todo.id, status);
@@ -42,7 +42,9 @@ export default function Todo({ todo }: { todo: ITodo }) {
           </Button>
         )}
 
-        <Button key={'DELETE'}>DELETE</Button>
+        <Button key={'DELETE'} onClick={() => removeTodo(todo.id)}>
+          DELETE
+        </Button>
       </ButtonGroup>
     </div>
   );
