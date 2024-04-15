@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import ITodo, { Status } from '../types/Todo.type';
+import { persist } from 'zustand/middleware';
 
 interface TodoStore {
   todos: ITodo[];
@@ -10,23 +11,33 @@ interface TodoStore {
   setCurrentStatus: (status: Status) => void;
 }
 
-export const useTodoStore = create<TodoStore>((set) => ({
-  todos: [],
-  currentStatus: Status.TODO,
-  addTodo: (text: string) =>
-    set((state) => ({
-      todos: [...state.todos, { id: Date.now(), text, status: Status.TODO }],
-    })),
-  removeTodo: (id) =>
-    set((state) => ({
-      todos: state.todos.filter((todo) => todo.id !== id),
-    })),
-  setTodoStatus(id, status) {
-    set((state) => ({
-      todos: state.todos.map((todo) =>
-        todo.id === id ? { ...todo, status } : todo
-      ),
-    }));
-  },
-  setCurrentStatus: (status) => set({ currentStatus: status }),
-}));
+export const useTodoStore = create<TodoStore>()(
+  persist(
+    (set) => ({
+      todos: [],
+      currentStatus: Status.TODO,
+      addTodo: (text: string) =>
+        set((state) => ({
+          todos: [
+            ...state.todos,
+            { id: Date.now(), text, status: Status.TODO },
+          ],
+        })),
+      removeTodo: (id) =>
+        set((state) => ({
+          todos: state.todos.filter((todo) => todo.id !== id),
+        })),
+      setTodoStatus(id, status) {
+        set((state) => ({
+          todos: state.todos.map((todo) =>
+            todo.id === id ? { ...todo, status } : todo
+          ),
+        }));
+      },
+      setCurrentStatus: (status) => set({ currentStatus: status }),
+    }),
+    {
+      name: 'todoist',
+    }
+  )
+);
