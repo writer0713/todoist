@@ -1,6 +1,6 @@
 import { Button, ButtonGroup } from '@mui/material';
-import ITodo, { Status } from '../types/Todo.type';
 import { useTodoStore } from '../stores/TodoStore';
+import ITodo from '../types/Todo.type';
 
 export default function Todo({ todo }: { todo: ITodo }) {
   const { statuses, removeTodo, setTodoStatus } = useTodoStore((state) => ({
