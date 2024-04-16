@@ -8,7 +8,7 @@ import {
   TextField,
 } from '@mui/material';
 import { useState } from 'react';
-import { useTodoStore } from '../stores/TodoStore';
+import { useTodoStore } from '../../stores/TodoStore';
 
 export default function StatusAddingDialog() {
   const [open, setOpen] = useState(false);

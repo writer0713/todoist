@@ -18,7 +18,7 @@ export default function InputForm() {
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <>
       <TextField
         id="outlined-basic"
         label="Add Task"
@@ -31,6 +31,6 @@ export default function InputForm() {
       <Button variant="contained" onClick={handleAddTodo}>
         ADD
       </Button>
-    </div>
+    </>
   );
 }

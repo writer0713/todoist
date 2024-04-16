@@ -12,6 +12,7 @@ interface TodoStore {
   addStatus: (status: string) => void;
   modifyTodoStatus: (id: number, status: string) => void;
   setCurrentStatus: (status: string) => void;
+  resetAll: () => void;
 }
 
 export const useTodoStore = create<TodoStore>()(
@@ -24,7 +25,7 @@ export const useTodoStore = create<TodoStore>()(
         set((state) => ({
           todos: [
             ...state.todos,
-            { id: Date.now(), text, status: Status.TODO },
+            { id: Date.now(), text, status: state.currentStatus },
           ],
         })),
       removeTodo: (id) =>
@@ -42,6 +43,12 @@ export const useTodoStore = create<TodoStore>()(
         }));
       },
       setCurrentStatus: (status) => set({ currentStatus: status }),
+      resetAll: () =>
+        set({
+          todos: [],
+          currentStatus: Status.TODO,
+          statuses: [Status.TODO, Status.DOING, Status.DONE],
+        }),
     }),
     {
       name: 'todoist',
