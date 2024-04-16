@@ -18,17 +18,17 @@ function App() {
       </div>
 
       {/* input form container */}
-      <div className="flex flex-col w-full gap-2 mb-10">
+      <div className="flex flex-col w-[350px] gap-2 mb-10">
         <InputForm />
       </div>
 
       {/* status container */}
-      <div className="flex flex-col w-full gap-2 mb-10">
+      <div className="flex flex-col w-[350px] gap-2 mb-10">
         <StatusForm />
       </div>
 
       {/* todos container */}
-      <div className="w-full overflow-y-scroll h-[500px] p-5 ">
+      <div className="w-[350px] overflow-y-scroll h-[500px] p-5 ">
         <Todos todos={todos} />
       </div>
 

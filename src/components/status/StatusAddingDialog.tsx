@@ -25,7 +25,7 @@ export default function StatusAddingDialog() {
   return (
     <>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Add
+        Add NEW STATUS
       </Button>
       <Dialog
         open={open}
@@ -38,7 +38,6 @@ export default function StatusAddingDialog() {
             const formData = new FormData(event.currentTarget);
             const formJson = Object.fromEntries((formData as any).entries());
             const status = formJson.status;
-            console.log(status);
 
             if (status.length === 0) return;
 
